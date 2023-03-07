@@ -95,7 +95,7 @@ public class UserTest {
     //TEST TO CHECK PASSWORD RULE TWO INVALID
     @Test
     public void givenPassword_whenNotContainUpperCase_thenReturnFalse() {
-        String password = "tanujachaugule";
+        String password = "tanuja";
         boolean passwordTwo = userregistration.validatePasswordRuleTwo(password);
         Assert.assertFalse(passwordTwo);
     }
