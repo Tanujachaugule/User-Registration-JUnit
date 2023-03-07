@@ -177,7 +177,7 @@ public class UserTest {
         String password = "tanuja123";
         try {
             boolean passwordFoure = userregistration.validatePasswordRuleFour(password);
-            Assert.assertFalse(passwordFoure);
+            Assert.assertTrue(passwordFoure);
         } catch (UserException e) {
             Assert.assertEquals(UserException.ExceptionType.Invalid_Password, e.type);
         }

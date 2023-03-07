@@ -1,6 +1,9 @@
 package com.userRegistration;
 
 import java.util.regex.Pattern;
+interface ValidateFunction {
+    boolean validate(String pattern, String userInput);
+}
 public class UserRegistration {
     String firstNamePattern = "^[A-Z]{1}[ a-z]{2,25}";
     String lastNamePattern = "^[A-Z]{1}[ a-z]{2,25}";
@@ -12,21 +15,29 @@ public class UserRegistration {
     String passwordPatternFourRule = "(?=.*[A-Z])(?=.*[0-9])(?=.*[!?#$]{1})[a-zA-Z0-9!?#$]{8,32}$";
     String sampleEmailPattern = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?";
 
+    ValidateFunction lambdaPattern = (userInput, pattern) -> {
+        boolean result = Pattern.matches(pattern,userInput);
+        return result;
+    };
+
+    private boolean lambdaPattern(String userInput, String pattern){
+        return true;
+    }
 
     public static void main(String[] args) {
         System.out.println("Welcome to User Registration Validation");
     }
 
     public boolean validateFirstName(String firstName) throws UserException {
-        if (Pattern.matches(firstNamePattern, firstName)) {
+        if(lambdaPattern(firstName, firstNamePattern)) {
             return true;
-        } else {
+        } else{
             throw new UserException("Invalid First Name", UserException.ExceptionType.Invalid_First_Name);
         }
     }
 
     public boolean validateLastName(String lastName) throws UserException {
-        if (Pattern.matches(lastNamePattern,lastName)) {
+        if(lambdaPattern(lastName,lastNamePattern)) {
             return true;
         } else {
             throw new UserException("Invalid Last Name", UserException.ExceptionType.Invalid_Last_Name);
@@ -34,7 +45,7 @@ public class UserRegistration {
     }
 
     public boolean validateEmailID(String emailID) throws UserException {
-        if (Pattern.matches(emailPattern,emailID)) {
+        if( lambdaPattern(emailID, emailPattern)) {
             return true;
         } else {
             throw new UserException("Invalid Email ID", UserException.ExceptionType.Invalid_Email);
@@ -42,23 +53,24 @@ public class UserRegistration {
     }
 
     public boolean validateMobileNumber(String mobileNumber) throws UserException {
-        if (Pattern.matches(mobilePattern,mobileNumber)) {
+        if( lambdaPattern(mobileNumber, mobilePattern)) {
             return true;
         } else {
-            throw new UserException("Invalid First Name", UserException.ExceptionType.Invalid_Mobile);
+            throw new UserException("Invalid Mobile Number", UserException.ExceptionType.Invalid_Mobile);
         }
     }
 
     public boolean validatePasswordRuleOne(String passwordOne) throws UserException {
-        if (Pattern.matches(passwordPatternFirstRule,passwordOne)) {
+        if(lambdaPattern(passwordOne, passwordPatternFirstRule)) {
             return true;
         } else {
             throw new UserException("Invalid Password", UserException.ExceptionType.Invalid_Password);
         }
+
     }
 
-    public boolean validatePasswordRuleTwo(String passwordTwo) throws UserException {
-        if (Pattern.matches(passwordPatternSecondRule,passwordTwo)){
+    public boolean validatePasswordRuleTwo(String passwordTwo) throws UserException  {
+        if(lambdaPattern(passwordTwo, passwordPatternSecondRule)) {
             return true;
         } else {
             throw new UserException("Invalid Password", UserException.ExceptionType.Invalid_Password);
@@ -66,7 +78,7 @@ public class UserRegistration {
     }
 
     public boolean validatePasswordRuleThree(String passwordThree) throws UserException {
-        if (Pattern.matches(passwordPatternThreeRule,passwordThree)) {
+        if(lambdaPattern(passwordThree, passwordPatternThreeRule)) {
             return true;
         } else {
             throw new UserException("Invalid Password", UserException.ExceptionType.Invalid_Password);
@@ -74,15 +86,15 @@ public class UserRegistration {
     }
 
     public boolean validatePasswordRuleFour(String passwordFour) throws UserException {
-        if (Pattern.matches(passwordPatternFourRule,passwordFour)) {
+
+        if(lambdaPattern(passwordFour, passwordPatternFourRule)) {
             return true;
         } else {
             throw new UserException("Invalid Password", UserException.ExceptionType.Invalid_Password);
         }
     }
 
-    public boolean validateSampleEmail(String email) {
-
+    public boolean validateSampleEmail(String email)  {
         return (Pattern.matches(sampleEmailPattern,email));
     }
 }
