@@ -17,41 +17,72 @@ public class UserRegistration {
         System.out.println("Welcome to User Registration Validation");
     }
 
-    public boolean validateFirstName(String firstName) {
-        return (Pattern.matches(firstNamePattern,firstName));
+    public boolean validateFirstName(String firstName) throws UserException {
+        if (Pattern.matches(firstNamePattern, firstName)) {
+            return true;
+        } else {
+            throw new UserException("Invalid First Name", UserException.ExceptionType.Invalid_First_Name);
+        }
     }
 
-    public boolean validateLastName(String lastName) {
-        return (Pattern.matches(lastNamePattern,lastName));
+    public boolean validateLastName(String lastName) throws UserException {
+        if (Pattern.matches(lastNamePattern,lastName)) {
+            return true;
+        } else {
+            throw new UserException("Invalid Last Name", UserException.ExceptionType.Invalid_Last_Name);
+        }
     }
 
-    public boolean validateEmailID(String emailID) {
-        return (Pattern.matches(emailPattern,emailID));
+    public boolean validateEmailID(String emailID) throws UserException {
+        if (Pattern.matches(emailPattern,emailID)) {
+            return true;
+        } else {
+            throw new UserException("Invalid Email ID", UserException.ExceptionType.Invalid_Email);
+        }
     }
 
-    public boolean validateMobileNumber(String mobileNumber) {
-        return (Pattern.matches(mobilePattern,mobileNumber));
+    public boolean validateMobileNumber(String mobileNumber) throws UserException {
+        if (Pattern.matches(mobilePattern,mobileNumber)) {
+            return true;
+        } else {
+            throw new UserException("Invalid First Name", UserException.ExceptionType.Invalid_Mobile);
+        }
     }
 
-    public boolean validatePasswordRuleOne(String passwordOne) {
-        return (Pattern.matches(passwordPatternFirstRule,passwordOne));
+    public boolean validatePasswordRuleOne(String passwordOne) throws UserException {
+        if (Pattern.matches(passwordPatternFirstRule,passwordOne)) {
+            return true;
+        } else {
+            throw new UserException("Invalid Password", UserException.ExceptionType.Invalid_Password);
+        }
     }
 
-    public boolean validatePasswordRuleTwo(String passwordTwo) {
-        return (Pattern.matches(passwordPatternSecondRule,passwordTwo));
+    public boolean validatePasswordRuleTwo(String passwordTwo) throws UserException {
+        if (Pattern.matches(passwordPatternSecondRule,passwordTwo)){
+            return true;
+        } else {
+            throw new UserException("Invalid Password", UserException.ExceptionType.Invalid_Password);
+        }
     }
 
-    public boolean validatePasswordRuleThree(String passwordThree) {
-        return (Pattern.matches(passwordPatternThreeRule,passwordThree));
+    public boolean validatePasswordRuleThree(String passwordThree) throws UserException {
+        if (Pattern.matches(passwordPatternThreeRule,passwordThree)) {
+            return true;
+        } else {
+            throw new UserException("Invalid Password", UserException.ExceptionType.Invalid_Password);
+        }
     }
 
-    public boolean validatePasswordRuleFour(String passwordFour) {
-        return (Pattern.matches(passwordPatternFourRule,passwordFour));
+    public boolean validatePasswordRuleFour(String passwordFour) throws UserException {
+        if (Pattern.matches(passwordPatternFourRule,passwordFour)) {
+            return true;
+        } else {
+            throw new UserException("Invalid Password", UserException.ExceptionType.Invalid_Password);
+        }
     }
 
     public boolean validateSampleEmail(String email) {
 
         return (Pattern.matches(sampleEmailPattern,email));
     }
-
 }

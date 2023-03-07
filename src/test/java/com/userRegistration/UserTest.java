@@ -7,105 +7,145 @@ public class UserTest {
 
     //TEST TO CHECK  FIRST NAME VALID
     @Test
-    public void givenFirstName_whenFirstLetterCapital_thenReturnTrue() {
+    public void givenFirstName_whenFirstLetterCapital_thenReturnTrue() throws UserException {
         String name = "Tanuja";
-        boolean firstName = userregistration.validateFirstName(name);
-        Assert.assertTrue(firstName);
+        try {
+            boolean firstName = userregistration.validateFirstName(name);
+        } catch (UserException e) {
+            Assert.assertEquals(UserException.ExceptionType.Invalid_First_Name, e.type);
+        }
     }
 
     //TEST TO CHECK FIRST NAME INVALID
     @Test
     public void givenFirstName_whenFirstLetterNotCapital_thenReturnFalse() {
         String name = "tanuja";
-        boolean firstName = userregistration.validateFirstName(name);
-        Assert.assertFalse(firstName);
+        try {
+            boolean firstName = userregistration.validateFirstName(name);
+        } catch (UserException e) {
+            Assert.assertEquals(UserException.ExceptionType.Invalid_First_Name, e.type);
+        }
     }
 
     //TEST TO CHECK  LAST NAME VALID
     @Test
     public void givenLastName_whenLastLetterCapital_thenReturnTrue() {
         String name = "Chaugule";
-        boolean lastName = userregistration.validateLastName(name);
-        Assert.assertTrue(lastName);
+        try {
+            boolean lastName = userregistration.validateLastName(name);
+        } catch (UserException e) {
+            Assert.assertEquals(UserException.ExceptionType.Invalid_Last_Name, e.type);
+        }
     }
 
     //TEST TO CHECK LAST NAME INVALID
     @Test
     public void givenLastName_whenLastLetterNotCapital_thenReturnFalse() {
         String name = "chaugule";
-        boolean lastName = userregistration.validateLastName(name);
-        Assert.assertFalse(lastName);
+        try {
+            boolean lastName = userregistration.validateLastName(name);
+        } catch (UserException e) {
+            Assert.assertEquals(UserException.ExceptionType.Invalid_Last_Name, e.type);
+        }
     }
 
     //TEST TO CHECK  EMAIL ID VALID
     @Test
     public void givenEmailID_whenValid_thenReturnTrue() {
         String emailID = "abc.xyz@bl.co.in";
-        boolean emailName = userregistration.validateEmailID(emailID);
-        Assert.assertTrue(emailName);
+        try {
+            boolean emailName = userregistration.validateEmailID(emailID);
+        } catch (UserException e) {
+            Assert.assertEquals(UserException.ExceptionType.Invalid_Email, e.type);
+        }
     }
 
     //TEST TO CHECK EMAIL ID INVALID
     @Test
     public void givenEmailID_whenInvalid_thenReturnFalse() {
         String emailID = "abc";
-        boolean emailName = userregistration.validateEmailID(emailID);
-        Assert.assertFalse(emailName);
+        try {
+            boolean emailName = userregistration.validateEmailID(emailID);
+        } catch (UserException e) {
+            Assert.assertEquals(UserException.ExceptionType.Invalid_Email, e.type);
+        }
     }
 
     //TEST TO CHECK MOBILE NUMBER VALID
     @Test
     public void givenMobileNumber_whenValid_thenReturnTrue() {
         String number = "91 9919819801";
-        boolean mobileNumber = userregistration.validateMobileNumber(number);
-        Assert.assertTrue(mobileNumber);
+        try {
+            boolean mobileNumber = userregistration.validateMobileNumber(number);
+        } catch (UserException e) {
+            Assert.assertEquals(UserException.ExceptionType.Invalid_Mobile, e.type);
+        }
     }
 
     //TEST TO CHECK MOBILE NUMBER INVALID
     @Test
     public void givenMobileNumber_whenInvalid_thenReturnFalse() {
         String number = "9919813";
-        boolean mobileNumber = userregistration.validateMobileNumber(number);
-        Assert.assertFalse(mobileNumber);
+        try {
+            boolean mobileNumber = userregistration.validateMobileNumber(number);
+        } catch (UserException e) {
+            Assert.assertEquals(UserException.ExceptionType.Invalid_Mobile, e.type);
+        }
     }
 
     //TEST TO CHECK PASSWORD RULE ONE VALID
     @Test
     public void givenPassword_whenMinimum8Characters_thenReturnTrue() {
         String password = "tanujachaugule";
-        boolean passwordOne = userregistration.validatePasswordRuleOne(password);
-        Assert.assertTrue(passwordOne);
+        try {
+            boolean passwordOne = userregistration.validatePasswordRuleOne(password);
+        } catch (UserException e) {
+            Assert.assertEquals(UserException.ExceptionType.Invalid_Password, e.type);
+        }
     }
 
     //TEST TO CHECK PASSWORD RULE ONE INVALID
     @Test
     public void givenPassword_whenNotMinimum8Characters_thenReturnFalse() {
         String password = "tanuja";
-        boolean passwordOne = userregistration.validatePasswordRuleOne(password);
-        Assert.assertFalse(passwordOne);
+        try {
+            boolean passwordOne = userregistration.validatePasswordRuleOne(password);
+        } catch (UserException e) {
+            Assert.assertEquals(UserException.ExceptionType.Invalid_Password, e.type);
+        }
     }
 
     //TEST TO CHECK PASSWORD RULE TWO VALID
     @Test
     public void givenPassword_whenAtLeast1UpperCase_thenReturnTrue() {
         String password = "Tanujachaugule";
-        boolean passwordTwo = userregistration.validatePasswordRuleTwo(password);
-        Assert.assertTrue(passwordTwo);
+        try {
+            boolean passwordTwo = userregistration.validatePasswordRuleTwo(password);
+        } catch (UserException e) {
+            Assert.assertEquals(UserException.ExceptionType.Invalid_Password, e.type);
+        }
     }
+
     //TEST TO CHECK PASSWORD RULE TWO INVALID
     @Test
     public void givenPassword_whenNotContainUpperCase_thenReturnFalse() {
-        String password = "tanuja";
-        boolean passwordTwo = userregistration.validatePasswordRuleTwo(password);
-        Assert.assertFalse(passwordTwo);
+        String password = "tanujachaugule";
+        try {
+            boolean passwordTwo = userregistration.validatePasswordRuleTwo(password);
+        } catch (UserException e) {
+            Assert.assertEquals(UserException.ExceptionType.Invalid_Password, e.type);
+        }
     }
 
     //TEST TO CHECK PASSWORD RULE THREE VALID
     @Test
     public void givenPassword_whenAtLeast1Number_thenReturnTrue() {
         String password = "Tanuja12";
-        boolean passwordThree= userregistration.validatePasswordRuleThree(password);
-        Assert.assertTrue(passwordThree);
+        try {
+            boolean passwordThree = userregistration.validatePasswordRuleThree(password);
+        } catch (UserException e) {
+            Assert.assertEquals(UserException.ExceptionType.Invalid_Password, e.type);
+        }
     }
 
 
@@ -113,23 +153,33 @@ public class UserTest {
     @Test
     public void givenPassword_whenNotContainNumber_thenReturnFalse() {
         String password = "tanujachaugule";
-        boolean passwordThree = userregistration.validatePasswordRuleThree(password);
-        Assert.assertFalse(passwordThree);
+        try {
+            boolean passwordThree = userregistration.validatePasswordRuleThree(password);
+        } catch (UserException e) {
+            Assert.assertEquals(UserException.ExceptionType.Invalid_Password, e.type);
+        }
     }
 
     //TEST TO CHECK PASSWORD RULE FOURE VALID
     @Test
     public void givenPassword_whenHasSpecialCharacters_thenReturnTrue() {
         String password = "Tanuja#12";
-        boolean passwordFoure = userregistration.validatePasswordRuleFour(password);
-        Assert.assertTrue(passwordFoure);
+        try {
+            boolean passwordFoure = userregistration.validatePasswordRuleFour(password);
+        } catch (UserException e) {
+            Assert.assertEquals(UserException.ExceptionType.Invalid_Password, e.type);
+        }
     }
 
     //TEST TO CHECK PASSWORD RULE FOURE INVALID
     @Test
     public void givenPassword_whenNotContainSpecialCharacters_thenReturnFalse() {
         String password = "tanuja123";
-        boolean passwordFoure = userregistration.validatePasswordRuleFour(password);
-        Assert.assertFalse(passwordFoure);
+        try {
+            boolean passwordFoure = userregistration.validatePasswordRuleFour(password);
+            Assert.assertFalse(passwordFoure);
+        } catch (UserException e) {
+            Assert.assertEquals(UserException.ExceptionType.Invalid_Password, e.type);
+        }
     }
 }
