@@ -10,7 +10,7 @@ public class UserRegistration {
     String passwordPatternSecondRule = "(?=.*[A-Z])[a-zA-Z]{8,32}$";
     String passwordPatternThreeRule = "(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]{8,32}$";
     String passwordPatternFourRule = "(?=.*[A-Z])(?=.*[0-9])(?=.*[!?#$]{1})[a-zA-Z0-9!?#$]{8,32}$";
-    String allSampleEmailPattern = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?";
+    String sampleEmailPattern = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?";
 
 
     public static void main(String[] args) {
@@ -51,6 +51,7 @@ public class UserRegistration {
 
     public boolean validateSampleEmail(String email) {
 
-        return (Pattern.matches(allSampleEmailPattern,email));
+        return (Pattern.matches(sampleEmailPattern,email));
     }
+
 }
